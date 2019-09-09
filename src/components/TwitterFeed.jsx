@@ -1,5 +1,6 @@
 import React from "react";
 import Tweet from "./Tweet";
+import { Link } from 'react-router-dom';
 
 var twitterList = [
   {
@@ -35,6 +36,7 @@ function TwitterFeed(){
           content = {tweet.content}
           key = {index}/>
         )}
+        <Link to='/profile'>User Profile</Link>
     </div>
   );
 }

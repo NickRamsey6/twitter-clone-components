@@ -15,4 +15,4 @@ function FollowerRecommendations() {
   );
 }
 
-export default FollowerRecommendations
+export default FollowerRecommendations;

@@ -1,18 +1,19 @@
-import React from "react";
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 function Navbar() {
   return(
-    <div class="container">
+    <div class='container'>
       <div>
         <nav>
-          <a href="default.asp">Home</a>
-          <a href="news.asp">Notifications</a>
-          <a href="contact.asp">Messages</a>
+          <Link to='/'>Home</Link>
+          <a href='news.asp'>Notifications</a>
+          <a href='contact.asp'>Messages</a>
         </nav>
       </div>
-      <div className="searchbar">
+      <div className='searchbar'>
         <form>
-          <input type="text" placeholder="Search"></input>
+          <input type='text' placeholder='Search'></input>
           <button>Tweet</button>
         </form>
       </div>
