@@ -1,44 +1,27 @@
 import React from "react";
 import Tweet from "./Tweet";
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
-var twitterList = [
-  {
-    name: 'name',
-    content: 'some dumb tweet'
-  },
-  {
-    name: 'name',
-    content: 'some dumb tweet'
-  },
-  {
-    name: 'name',
-    content: 'some dumb tweet'
-  },
-  {
-    name: 'name',
-    content: 'some dumb tweet'
-  },
-  {
-    name: 'name',
-    content: 'some dumb tweet'
-  }
-];
 
-function TwitterFeed(){
+function TwitterFeed(props){
   return(
-    <div class="container">
+    <div className="container">
       <form>
         <input type="text" placeholder="What's Happening"></input>
       </form>
-      {twitterList.map((tweet,index) =>
+      {props.tweetList.map((tweet,index) =>
         <Tweet name = {tweet.name}
           content = {tweet.content}
           key = {index}/>
         )}
-        <Link to='/profile'>User Profile</Link>
+        <Link to='/profile'>User Profile</Link> | <Link to='/newtweet'>Add New Tweet</Link>
     </div>
   );
 }
+
+TwitterFeed.propTypes = {
+  tweetList: PropTypes.array
+};
 
 export default TwitterFeed;

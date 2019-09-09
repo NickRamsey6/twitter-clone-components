@@ -12,7 +12,7 @@ function Tweet(props){
 }
 
 Tweet.propTypes = {
-  names: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
   content: PropTypes.string.isRequired
 };
 

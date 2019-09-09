@@ -14,6 +14,8 @@ function Summary() {
       <style jsx>{`
       .grey-text {
         background-color: grey;
+        border-radius: 10px;
+        padding: 5px;
       }
   `}</style>
     </div>
