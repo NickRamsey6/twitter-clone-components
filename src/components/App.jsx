@@ -41,6 +41,8 @@ class App extends React.Component {
 
     masterSearchList = masterSearchList.filter(tweet => tweet.name === userSearch)
 
+    // masterSearchList = masterSearchList.filter(tweet => userSearch.substring(tweet.name))
+
     console.log(masterSearchList, userSearch)
     console.log(this.state)
       this.setState({masterSearchList: masterSearchList});
@@ -57,7 +59,7 @@ class App extends React.Component {
       tweetList={this.state.masterTweetList} />} />
       <Route exact path='/profile' component={UserProfile} />
       <Route exact path='/newtweet' render={()=><NewTweetForm onNewTweetCreation={this.handleAddingNewTweetToList} />} />
-      <Route exact path='/searchresults' render={()=><SearchResults resultsFeed={this.state.masterSearchList} />} />
+      <Route exact path='/searchresults' render={()=> <SearchResults resultsFeed={this.state.masterSearchList} />} />
       <Route component={Error404} />
       </Switch>
       </div>

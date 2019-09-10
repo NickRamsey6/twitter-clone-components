@@ -21,6 +21,7 @@ function Navbar(props) {
   this._name = null;
   return(
     <div  className='container'>
+
       <div style={navStyle}>
         <nav>
           <Link to='/'>Home</Link>
@@ -31,7 +32,9 @@ function Navbar(props) {
       <div className='searchbar'>
         <form>
           <input type='text' placeholder='Search' ref={(input) => {this._name = input;}}></input>
+          <Link to="/searchresults">
           <button onClick={()=>props.searchTweets(this._name.value)}>Search tweets</button>
+          </Link>
         </form>
       </div>
     </div>
