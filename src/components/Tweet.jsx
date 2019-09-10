@@ -7,7 +7,8 @@ function Tweet(props){
     <div>
       <h3>{props.name}</h3>
       <p>{props.content}</p>
-      <Likes />
+      <h3>{props.likesCount}</h3>
+      <Likes likesCount={props.likesCount} index={props.index} callback={props.callback}/>
       <hr/>
     </div>
   );
@@ -15,7 +16,8 @@ function Tweet(props){
 
 Tweet.propTypes = {
   name: PropTypes.string.isRequired,
-  content: PropTypes.string.isRequired
+  content: PropTypes.string.isRequired,
+  likesCount: PropTypes.number
 };
 
 export default Tweet;

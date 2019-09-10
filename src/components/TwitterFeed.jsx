@@ -13,6 +13,9 @@ function TwitterFeed(props){
       {props.tweetList.map((tweet,index) =>
         <Tweet name = {tweet.name}
           content = {tweet.content}
+          likesCount = {tweet.likes}
+          callback={props.changeLikes}
+          index={index}
           key = {index}/>
         )}
         <Link to='/profile'>User Profile</Link> | <Link to='/newtweet'>Add New Tweet</Link>

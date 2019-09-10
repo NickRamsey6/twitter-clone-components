@@ -4,18 +4,23 @@ class Likes extends React.Component {
 
 constructor(props) {
   super(props);
+  let initialLikes = this.props.likesCount
+
+  if(!initialLikes) initialLikes = 0
   this.state = {
-    likesCount: 0
+    likesCount: initialLikes
   };
   this.handleLike = this.handleLike.bind(this);
   this.handleDislike = this.handleDislike.bind(this);
 }
 
   handleLike() {
+    this.props.callback(this.props.index, this.state.likesCount+1)
     this.setState({likesCount: this.state.likesCount + 1});
   }
 
   handleDislike() {
+    this.props.callback(this.props.index, this.state.likesCount-1)
     this.setState({likesCount: this.state.likesCount - 1});
   }
 
@@ -26,10 +31,11 @@ constructor(props) {
       <button onClick={this.handleLike}>Like</button>
       <button onClick={this.handleDislike}>Dislike</button>
       </div>
-    )
+    );
   }
-
-
 }
+
+
+
 
 export default Likes;

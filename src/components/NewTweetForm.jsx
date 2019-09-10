@@ -9,6 +9,7 @@ class NewTweetForm extends React.Component {
     this._content = null;
     this.state = {
       redirectToHome: false
+
      };
      this.handleNewTweetFormSubmission = this.handleNewTweetFormSubmission.bind(this);
     }
