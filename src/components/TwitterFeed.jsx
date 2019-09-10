@@ -3,11 +3,14 @@ import Tweet from "./Tweet";
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
+var formStyle = {
+  display: 'flex'
+}
 
 function TwitterFeed(props){
   return(
     <div className="container">
-      <form>
+      <form style={formStyle}>
         <input type="text" placeholder="What's Happening"></input>
       </form>
       {props.tweetList.map((tweet,index) =>

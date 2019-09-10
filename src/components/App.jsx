@@ -6,16 +6,20 @@ import { Switch, Route } from 'react-router-dom';
 import UserProfile from './UserProfile';
 import Error404 from './Error404';
 import NewTweetForm from './NewTweetForm';
+import SearchResults from './SearchResults';
 
 class App extends React.Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      masterTweetList: []
+      masterTweetList: [],
+      masterSearchList: []
+
     };
     this.handleAddingNewTweetToList = this.handleAddingNewTweetToList.bind(this);
     this.changeLikes = this.changeLikes.bind(this);
+    this.searchTweets = this.searchTweets.bind(this);
   }
 
   handleAddingNewTweetToList(newTweet) {
@@ -32,17 +36,28 @@ class App extends React.Component {
     this.setState({masterTweetList: newMasterTweetList});
   }
 
+  searchTweets(userSearch) {
+    var masterSearchList = this.state.masterTweetList.slice();
+
+    masterSearchList = masterSearchList.filter(tweet => tweet.name === userSearch)
+
+    console.log(masterSearchList, userSearch)
+    console.log(this.state)
+      this.setState({masterSearchList: masterSearchList});
+  }
+
   render(){
 
     return(
       <div>
-      <Navbar />
       <hr/>
+      <Navbar searchTweets={this.searchTweets} />
       <Switch>
       <Route exact path='/' render={()=><TwitterFeed changeLikes={this.changeLikes}
-        tweetList={this.state.masterTweetList} />} />
+      tweetList={this.state.masterTweetList} />} />
       <Route exact path='/profile' component={UserProfile} />
       <Route exact path='/newtweet' render={()=><NewTweetForm onNewTweetCreation={this.handleAddingNewTweetToList} />} />
+      <Route exact path='/searchresults' render={()=><SearchResults resultsFeed={this.state.masterSearchList} />} />
       <Route component={Error404} />
       </Switch>
       </div>

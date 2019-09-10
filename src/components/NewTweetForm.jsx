@@ -2,6 +2,31 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
 
+var formStyle = {
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'space-between',
+  width: '250px',
+  height: '200px'
+}
+
+var inputStyle = {
+  fontSize: '20px'
+}
+
+var bodyStyle = {
+  height: '130px',
+  width: '400px',
+  fontSize: '20px'
+}
+
+var buttonStyle = {
+  fontSize: '15px',
+  backgroundColor: 'coral',
+  fontWeight: 'bolder',
+  width: '100px'
+}
+
 class NewTweetForm extends React.Component {
   constructor(props){
     super(props);
@@ -29,18 +54,18 @@ class NewTweetForm extends React.Component {
 
   return (
     <div>
-      <form onSubmit={this.handleNewTweetFormSubmission}>
-        <input
+      <form style={formStyle} onSubmit={this.handleNewTweetFormSubmission}>
+        <input style={inputStyle}
         type='text'
         id='name'
         placeholder='User Name'
         ref={(input) => {this._name = input;}}/>
-        <textarea
+        <textarea style={bodyStyle}
         type='text'
         id='content'
         placeholder='What do you want to say'
         ref={(textarea) => {this._content = textarea;}}/>
-        <button type='submit'>Shout!</button>
+        <button style={buttonStyle} type='submit'>Shout!</button>
       </form>
     </div>
   );
