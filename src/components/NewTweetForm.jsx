@@ -1,36 +1,49 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Redirect } from 'react-router-dom';
 
-function NewTweetForm(props){
-  let _name = null;
-  let _content = null;
+class NewTweetForm extends React.Component {
+  constructor(props){
+    super(props);
+    this._name = null;
+    this._content = null;
+    this.state = {
+      redirectToHome: false
+     };
+     this.handleNewTweetFormSubmission = this.handleNewTweetFormSubmission.bind(this);
+    }
 
-  function handleNewTweetFormSubmission(event) {
+  handleNewTweetFormSubmission(event) {
     event.preventDefault();
-    console.log(_name.value);
-    console.log(_content.value);
-    props.onNewTweetCreation({name: _name.value, content: _content.value});
-    _name.value = '';
-    _content.value = '';
+    this.props.onNewTweetCreation({name: this._name.value, content: this._content.value});
+    this._name.value = '';
+    this._content.value = '';
+    this.setState({redirectToHome: true});
+  }
+
+  render() {
+  if (this.state.redirectToHome) {
+    return <Redirect to='/' />;
   }
 
   return (
     <div>
-      <form onSubmit={handleNewTweetFormSubmission}>
+      <form onSubmit={this.handleNewTweetFormSubmission}>
         <input
         type='text'
         id='name'
         placeholder='User Name'
-        ref={(input) => {_name = input;}}/>
+        ref={(input) => {this._name = input;}}/>
         <textarea
         type='text'
         id='content'
         placeholder='What do you want to say'
-        ref={(textarea) => {_content = textarea;}}/>
+        ref={(textarea) => {this._content = textarea;}}/>
         <button type='submit'>Shout!</button>
       </form>
     </div>
   );
+ }
 }
 
 NewTweetForm.propTypes = {
